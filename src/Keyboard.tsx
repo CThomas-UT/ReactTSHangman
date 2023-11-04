@@ -9,7 +9,7 @@ export function Keyboard() {
         }}>
             {KEYS.map(key => {
                 return (
-                    <button key={key} className={styles.btn} >
+                    <button key={key} className={`${styles.btn}`} >
                         {key}
                     </button>
                 )

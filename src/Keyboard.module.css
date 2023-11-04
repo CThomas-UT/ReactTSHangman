@@ -13,11 +13,17 @@
     text-align: center;
 }
 
-.btn:hover {
-    background: #000;
+.btn:hover:not(:disabled),.btn:focus:not(:disabled) {
+    background: #555;
     color: #fff;
 }
 
-.btn:active {
+.btn.active {
     transform: scale(0.9);
+    background: #333;
+    color: #fff;
+}
+
+.btn.inactive{
+    opacity: 0.5;
 }

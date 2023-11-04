@@ -1,0 +1,23 @@
+.btn {
+    width: 100%;
+    border: 3px solid #000;
+    background: none;
+    aspect-ratio: 1/1;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    padding: 1rem 0em;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.btn:active {
+    transform: scale(0.9);
+}

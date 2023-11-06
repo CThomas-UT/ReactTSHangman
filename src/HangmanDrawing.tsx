@@ -68,21 +68,20 @@ const RARM = (
         right: "-10px"}}/>
 )
 
+type HangmanDrawingProps = {
+    numberOfGuesses: number
+}
 
+const BODY_PARTS = [HEAD, BODY, LLEG, RLEG, LARM, RARM]
 
-export function HangmanDrawing() {
+export function HangmanDrawing({ numberOfGuesses }: HangmanDrawingProps) {
     return (
         <div style={{position: "relative"}}>
             
             {/* render hangman body */}
-            {HEAD}
-            {BODY}
-            {LLEG}
-            {RLEG}
-            {LARM}
-            {RARM}
+            {BODY_PARTS.slice(0, numberOfGuesses)}
 
-            {/* render hangman pole */} 
+            {/* ######## render hangman pole ######## */} 
 
             {/* Render rope */}
             <div style={{ 

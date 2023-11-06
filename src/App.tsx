@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import words from './chicagoWordList.json';
 import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
@@ -26,6 +26,28 @@ function App() {
     fontSize: "2rem",
     textAlign: "center"
   }
+
+  const addGuess = useCallback((key: string) => {
+    if (guesses.includes(key)) return
+    setGuesses(guesses => [...guesses, key])
+  }, [guesses])
+
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase()
+
+      if (!key.match(/^[a-z]$/)) return
+
+      event.preventDefault()
+      addGuess(key)
+    }
+
+    document.addEventListener('keydown', handler)
+
+    return () => {
+      document.removeEventListener('keydown', handler)
+    }
+  }, [guesses])
 
 
   return (

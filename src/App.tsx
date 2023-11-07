@@ -59,7 +59,10 @@ function App() {
       <HangmanDrawing numberOfGuesses={wrongGuesses.length} />
       <HangmanWord guesses={guesses} wordToGuess={wordToGuess}/>
       <div style={{alignSelf: "stretch"}}>
-        <Keyboard />
+        <Keyboard 
+          activeLetters={guesses.filter(letter => wordToGuess.includes(letter))}
+          inactiveLetters={wrongGuesses}
+          addGuess={addGuess}/>
       </div>
     </div>
   )

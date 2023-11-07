@@ -52,8 +52,8 @@ function App() {
           addGuess={addGuess}/>
       </div>
       <div className={styles.outcomeStyle}>
-        {gameLost && <div className={styles.loss}>You Lost!</div>}
-        {gameWon && <div className={styles.win}>You Won!</div>}
+        <div className={`${gameLost ? styles.loss : ""} ${gameWon ? styles.win : ""}`}>{gameLost ? 'You Lost' : ""}{gameWon ? 'You Won!' : ""}</div>
+        {gameWon || gameLost ? "To Try Again, Refresh" : ""}
       </div>
     </div>
   )

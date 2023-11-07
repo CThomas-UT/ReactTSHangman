@@ -3,6 +3,7 @@ import words from './chicagoWordList.json';
 import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
+import styles from './app.module.css';
 
 function App() {
   const [wordToGuess, setWordToGuess] = useState(() => {
@@ -13,19 +14,9 @@ function App() {
 
   const wrongGuesses = guesses.filter((letter) => !wordToGuess.includes(letter))
 
-  const returnStyle = {
-    maxWidth: "600px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "3rem",
-    margin: "0 auto", 
-    alignItems: "center"
-  }
+  const gameLost = wrongGuesses.length >= 6
 
-  const outcomeStyle = {
-    fontSize: "2rem",
-    textAlign: "center"
-  }
+  const gameWon = wordToGuess.split('').every(letter => guesses.includes(letter))
 
   const addGuess = useCallback((key: string) => {
     if (guesses.includes(key)) return
@@ -51,11 +42,7 @@ function App() {
 
 
   return (
-    <div style={returnStyle}>
-      <div style={outcomeStyle}>
-        Lose
-        Win
-      </div>
+    <div className={styles.returnStyle}>
       <HangmanDrawing numberOfGuesses={wrongGuesses.length} />
       <HangmanWord guesses={guesses} wordToGuess={wordToGuess}/>
       <div style={{alignSelf: "stretch"}}>
@@ -63,6 +50,10 @@ function App() {
           activeLetters={guesses.filter(letter => wordToGuess.includes(letter))}
           inactiveLetters={wrongGuesses}
           addGuess={addGuess}/>
+      </div>
+      <div className={styles.outcomeStyle}>
+        {gameLost && <div className={styles.loss}>You Lost!</div>}
+        {gameWon && <div className={styles.win}>You Won!</div>}
       </div>
     </div>
   )

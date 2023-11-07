@@ -1,0 +1,45 @@
+.loss {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: red;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.win {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: green;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.outcomeStyle {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.returnStyle {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 0 auto; 
+    align-items: center;
+}

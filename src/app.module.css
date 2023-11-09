@@ -46,3 +46,15 @@
     margin: 0 auto; 
     align-items: center;
 }
+
+.resultText {
+    font-size: 6rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 0%;
+    font-weight: bold;
+    transition: all 2s ease;
+
+}

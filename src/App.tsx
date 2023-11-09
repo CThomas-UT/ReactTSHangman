@@ -19,9 +19,9 @@ function App() {
   const gameWon = wordToGuess.split('').every(letter => guesses.includes(letter))
 
   const addGuess = useCallback((key: string) => {
-    if (guesses.includes(key)) return
+    if (guesses.includes(key) || gameLost || gameWon) return
     setGuesses(guesses => [...guesses, key])
-  }, [guesses])
+  }, [guesses, gameLost, gameWon])
 
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
@@ -31,6 +31,7 @@ function App() {
 
       event.preventDefault()
       addGuess(key)
+        
     }
 
     document.addEventListener('keydown', handler)
@@ -52,8 +53,11 @@ function App() {
           addGuess={addGuess}/>
       </div>
       <div className={styles.outcomeStyle}>
-        <div className={`${gameLost ? styles.loss : ""} ${gameWon ? styles.win : ""}`}>{gameLost ? 'You Lost' : ""}{gameWon ? 'You Won!' : ""}</div>
+        <div className={`${gameLost ? styles.loss : ""} ${gameWon ? styles.win : ""}`} />
         {gameWon || gameLost ? "To Try Again, Refresh" : ""}
+        <div className={`${gameLost || gameWon ? styles.resultText : ""}`}>
+          {gameLost ? 'You Lost' : gameWon ? 'You Won!' : ""}
+        </div>
       </div>
     </div>
   )

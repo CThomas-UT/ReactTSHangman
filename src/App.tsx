@@ -45,7 +45,7 @@ function App() {
   return (
     <div className={styles.returnStyle}>
       <HangmanDrawing numberOfGuesses={wrongGuesses.length} />
-      <HangmanWord guesses={guesses} wordToGuess={wordToGuess}/>
+      <HangmanWord guesses={guesses} wordToGuess={wordToGuess} gameLost={gameLost}/>
       <div style={{alignSelf: "stretch"}}>
         <Keyboard 
           activeLetters={guesses.filter(letter => wordToGuess.includes(letter))}
@@ -54,10 +54,13 @@ function App() {
       </div>
       <div className={styles.outcomeStyle}>
         <div className={`${gameLost ? styles.loss : ""} ${gameWon ? styles.win : ""}`} />
-        {gameWon || gameLost ? "To Try Again, Refresh" : ""}
         <div className={`${gameLost || gameWon ? styles.resultText : ""}`}>
           {gameLost ? 'You Lost' : gameWon ? 'You Won!' : ""}
+          <div className={styles.tryagain}>
+            {gameWon || gameLost ? "Refresh to Play Again" : ""}
+          </div>
         </div>
+
       </div>
     </div>
   )

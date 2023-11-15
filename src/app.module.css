@@ -34,17 +34,17 @@
 
 .outcomeStyle {
     font-size: 2rem;
-    text-align: center;
     color: #000;
 }
 
 .returnStyle {
-    max-width: 600px;
+    max-width: 75%;
     display: flex;
     flex-direction: column;
     gap: 3rem;
     margin: 0 auto; 
     align-items: center;
+    overflow: hidden;
 }
 
 .resultText {
@@ -54,7 +54,17 @@
     color: white;
     position: absolute;
     left: 0%;
+    top: 200px;
     font-weight: bold;
     transition: all 2s ease;
+}
 
+.tryagain {
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    left: 0%;
+    top: 250px;
 }

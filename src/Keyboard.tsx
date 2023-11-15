@@ -14,7 +14,7 @@ export function Keyboard({ activeLetters, inactiveLetters, addGuess }: KeyboardP
     
     return (
         <div style={{
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(2.5em, 1fr))", gap: "0.25em",
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(2.5em, 1fr))", gap: "0.25em"
         }}>
             {KEYS.map(key => {
                 const isActive = activeLetters.includes(key)

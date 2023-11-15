@@ -76,7 +76,10 @@ const BODY_PARTS = [HEAD, BODY, LLEG, RLEG, LARM, RARM]
 
 export function HangmanDrawing({ numberOfGuesses }: HangmanDrawingProps) {
     return (
-        <div style={{position: "relative"}}>
+        <div style={{position: "relative",
+                    top: "20px",
+                    marginBottom: "0px"
+                    }}>
             
             {/* render hangman body */}
             {BODY_PARTS.slice(0, numberOfGuesses)}

@@ -35,16 +35,7 @@ function App() {
       addGuess(key)
         
     }
-
-    document.addEventListener('keydown', handler)
-
-    return () => {
-      document.removeEventListener('keydown', handler)
-    }
-  }, [guesses])
-
-  useEffect(() => {
-    const handler = (event: KeyboardEvent) => {
+    const enterHandler = (event: KeyboardEvent) => {
       const key = event.key
       if (key !== "Enter") return
 
@@ -55,11 +46,13 @@ function App() {
     }
 
     document.addEventListener('keydown', handler)
+    document.addEventListener('keydown', enterHandler)
 
     return () => {
       document.removeEventListener('keydown', handler)
+      document.removeEventListener('keydown', enterHandler)
     }
-  }, [])
+  }, [guesses])
 
 
   return (

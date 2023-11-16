@@ -1,12 +1,11 @@
-FROM ubuntu:22.04
+FROM node:14
 
-RUN apt-get update
-RUN apt-get install -y nginx curl zip
+WORKDIR /usr/src/app
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-RUN curl -o /var/www/html/main.zip -L https://codeload.github.com/CThomas-UT/ReactTSHangman/zip/main
-RUN cd /var/www/html/ && unzip main.zip && mv ReactTSHangman-main/* . && rm -rf ReactTSHangman-main main.zip
+RUN git clone https://github.com/CThomas-UT/ReactTSHangman.git .
 
-EXPOSE 80
+RUN npm install
 
-CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]

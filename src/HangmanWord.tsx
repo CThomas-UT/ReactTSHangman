@@ -17,8 +17,8 @@ export function HangmanWord({ wordToGuess, guesses, gameLost }: HangmanWordProps
         {wordToGuess.split("").map((letter, index) => (
             <span style={{borderBottom: "0.1em solid black"}} key={index}>
                 <span style={{
-                    visibility: guesses.includes(letter) ? "visible" : gameLost ? "visible" : "hidden",
-                    color: gameLost ?  !guesses.includes(letter) ? "red" : "black" : ""
+                    visibility: guesses.includes(letter) || gameLost ? "visible" : "hidden",
+                    color: gameLost && !guesses.includes(letter) ? "red" : "black"
                     }}>
                     {letter}
                 </span>

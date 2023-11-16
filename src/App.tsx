@@ -57,7 +57,7 @@ function App() {
         <div className={`${gameLost || gameWon ? styles.resultText : ""}`}>
           {gameLost ? 'You Lost' : gameWon ? 'You Won!' : ""}
           <div className={styles.tryagain}>
-            {gameWon || gameLost ? "Refresh to Play Again" : ""}
+            {gameWon || gameLost ? "Refresh or Press Enter to Play Again" : ""}
           </div>
         </div>
 

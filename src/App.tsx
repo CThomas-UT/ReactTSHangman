@@ -5,10 +5,12 @@ import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 import styles from './app.module.css';
 
+function getWord() {
+  return words[Math.floor(Math.random() * words.length)]
+}
+
 function App() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
-    return words[Math.floor(Math.random() * words.length)]
-  })
+  const [wordToGuess, setWordToGuess] = useState(getWord())
 
   const [guesses, setGuesses] = useState<string[]>([])
 
@@ -40,6 +42,24 @@ function App() {
       document.removeEventListener('keydown', handler)
     }
   }, [guesses])
+
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      const key = event.key
+      if (key !== "Enter") return
+
+      event.preventDefault()
+      setGuesses([])
+      setWordToGuess(getWord())
+        
+    }
+
+    document.addEventListener('keydown', handler)
+
+    return () => {
+      document.removeEventListener('keydown', handler)
+    }
+  }, [])
 
 
   return (

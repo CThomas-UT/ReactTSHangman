@@ -1,23 +1,14 @@
-# Use an official Node.js runtime as a parent image
-FROM node:14
+FROM node:16
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Install app dependencies
+ADD . .
+
 RUN npm install
 
-# Copy the entire project to the container
-COPY . .
+ENTRYPOINT ["/entrypoint.sh"]
 
-# Build TypeScript code
-RUN npm run build
-
-# Expose any necessary ports
-EXPOSE 3000
-
-# Run the TypeScript app
-CMD ["node", "dist/index.html"]
+CMD ["npm", "run", "dev"]
